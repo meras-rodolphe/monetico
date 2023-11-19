@@ -64,26 +64,23 @@ if (isset($_GET['idCommande'])) {
                $dateActuelle = new DateTime();
 $date = $dateActuelle->format('d/m/Y:H:i:s');
 
-function nettoyerEtEchapper($valeur) {
-    $valeur = json_encode($valeur, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
-    return $valeur;
-}
+
 // Définir les variables PHP
 $billing = array(
-    "firstName" => nettoyerEtEchapper($nom),
-    "lastName" => nettoyerEtEchapper($prenom),
-    "addressLine1" => nettoyerEtEchapper($num . ' ' . $rue),
-    "city" => nettoyerEtEchapper($ville),
-    "postalCode" => nettoyerEtEchapper($cp),
+    "firstName" => $nom,
+    "lastName" => $prenom,
+    "addressLine1" => $num . ' ' . $rue,
+    "city" => $ville,
+    "postalCode" => $cp
     "country" => "FR"
 );
 
 $shipping = array(
-    "firstName" => nettoyerEtEchapper($nom),
-    "lastName" => nettoyerEtEchapper($prenom),
-    "addressLine1" => nettoyerEtEchapper($num . ' ' . $rue),
-    "city" => nettoyerEtEchapper($ville),
-    "postalCode" => nettoyerEtEchapper($cp),
+    "firstName" => $nom
+    "lastName" => $prenom
+    "addressLine1" => $num . ' ' . $rue
+    "city" => $ville
+    "postalCode" => $cp,
     "country" => "FR",
     "email" => $mail,
     "phone" => $tel,
@@ -106,13 +103,13 @@ $json_base64 = base64_encode($json_billing);
 echo $jsonData;
 
 // Clé de sécurité représentée de façon externe
-$cleExterneHex = "02DE82BC4716258B92BA878808FF692048425C94";
+$cleExterneHex = "****************";
 
 // Convertir la représentation hexadécimale de la clé en binaire
 $cleBinaire = hex2bin($cleExterneHex);
 
 // Données à utiliser pour générer le HMAC
-$TPE = '7589889';
+$TPE = '*****';
 $contexte_commande = $json_base64;
 $montant = $totalCommande . 'EUR';
 $reference = $idCommande;
