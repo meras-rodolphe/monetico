@@ -53,7 +53,7 @@ require('../config/secu-user.php');
         </table>
         <form method="post" name="Monetico" target="_top" action="https://p.monetico-services.com/test/paiement.cgi ">
             <input type="hidden" name="version" value="3.0">
-            <input type="hidden" name="TPE" value="7589889">
+            <input type="hidden" name="TPE" value="*****">
             <input type="hidden" name="date" value="<?=$date;?>">
             <input type="hidden" name="montant" value="<?= $totalCommande;?>EUR">
             <input type="hidden" name="reference" value="<?= $idCommande;?>">
